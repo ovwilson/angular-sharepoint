@@ -1,10 +1,7 @@
-import * as fs from 'fs';
 import * as urlParse from 'url';
 import * as https from 'https';
-import * as service from './services/service';
-
-import { Options, Params } from './models/model';
-
+import * as service from './../services/service';
+import { Options, Params } from './../models/model';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/take';
 
@@ -26,7 +23,7 @@ export class Credentials {
     get username(): string | undefined { return this._options.username }
     get password(): string | undefined { return this._options.password }
     get endPoint(): string { return `${this.url.protocol}//${this.url.hostname}${this._params.login}`; }
-    get SAMLTemplate(): string { return fs.readFileSync('./saml.xml', 'utf8'); }
+    get SAMLTemplate(): string { return service.getSAMLTemplate() }
     get stsParams(): any {
         return {
             username: this.username,
@@ -57,6 +54,7 @@ export class Credentials {
 
         const saml = this.buildSamlRequest();
         const options = this.getTokenOptions(saml);
+        
         let req = https.request(options, (response) => {
             let xml = '';
             response.setEncoding('utf8');

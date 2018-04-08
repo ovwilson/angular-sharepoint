@@ -7,7 +7,6 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const fs = __importStar(require("fs"));
 const urlParse = __importStar(require("url"));
 const https = __importStar(require("https"));
 const service = __importStar(require("./services/service"));
@@ -24,7 +23,7 @@ class Credentials {
     get username() { return this._options.username; }
     get password() { return this._options.password; }
     get endPoint() { return `${this.url.protocol}//${this.url.hostname}${this._params.login}`; }
-    get SAMLTemplate() { return fs.readFileSync('./saml.xml', 'utf8'); }
+    get SAMLTemplate() { return service.getSAMLTemplate(); }
     get stsParams() {
         return {
             username: this.username,

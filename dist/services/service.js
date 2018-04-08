@@ -7,8 +7,10 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const fs = __importStar(require("fs"));
 const xml2js = __importStar(require("xml2js"));
 const Observable_1 = require("rxjs/Observable");
+exports.getSAMLTemplate = () => { return fs.readFileSync('./saml.xml', 'utf8'); };
 exports.parseToken = (xml) => {
     return Observable_1.Observable.create((observer) => {
         let parser = new xml2js.Parser({ emptyTag: '' });

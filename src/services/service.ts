@@ -1,5 +1,8 @@
+import * as fs from 'fs';
 import * as xml2js from 'xml2js';
 import { Observable } from 'rxjs/Observable';
+
+export const getSAMLTemplate = (): string =>  { return fs.readFileSync('./saml.xml', 'utf8'); }
 
 export const parseToken = (xml: string): Observable<any> => {
     return Observable.create((observer: any) => {
@@ -17,3 +20,4 @@ export const parseToken = (xml: string): Observable<any> => {
         parser.parseString(xml);
     });
 }
+

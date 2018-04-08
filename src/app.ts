@@ -1,7 +1,4 @@
-import * as fs from 'fs';
-import * as urlParse from 'url';
-import * as https from 'https';
-import { Credentials } from './credentials';
+import { Credentials } from './lib/credentials';
 import { Options, Params } from './models/model';
 
 const dotenv = require('dotenv').config();
