@@ -9,4 +9,5 @@ export interface Params {
     stsHost: string;
     stsPath: string;
     odatasvc: string;
+    userAgentHeader: any;
 }
