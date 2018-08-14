@@ -64,7 +64,7 @@ exports.parseCookies = (cookies) => {
     let cookieMap = {};
     cookies.forEach(cookie => {
         const idx = cookie.indexOf('=');
-        const name = cookie.substr(0, idx);
+        const name = cookie.substr(0, idx + 1);
         const value = cookie.substr(idx + 1, cookie.length);
         cookieMap[name] = value;
     });

@@ -57,12 +57,12 @@ export const submiToken = (token: string, options: any): Observable<string> => {
 }
 
 export const parseCookies = (cookies: string[]) => {
-    let cookieMap : any = {};
+    let cookieMap: any = {};
     cookies.forEach(cookie => {
         const idx = cookie.indexOf('=');
-        const name = cookie.substr(0, idx);
+        const name = cookie.substr(0, idx + 1);
         const value = cookie.substr(idx + 1, cookie.length);
-        cookieMap[name] =value;
+        cookieMap[name] = value;
     })
     return cookieMap;
 }

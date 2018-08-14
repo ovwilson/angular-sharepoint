@@ -64,9 +64,6 @@ class Credentials {
         const options = this.getSPOOptions();
         return service.submiToken(token, options);
     }
-    parseCookies(cookies) {
-        return service.parseCookies(cookies);
-    }
     signin() {
         return this.requestToken().pipe(operators_1.take(1), operators_1.switchMap(xml => this.parseToken(xml)), operators_1.take(1), operators_1.switchMap(token => this.submitToken(token)), operators_1.take(1));
     }
